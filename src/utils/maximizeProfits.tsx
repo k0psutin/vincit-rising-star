@@ -4,7 +4,7 @@ import {
   Entries, Entry, ResultObject, MaximizeProfits,
 } from '../types';
 import { longestDownwardTrend } from './longestDownwardTrend';
-import { dateToString } from '.';
+import { formatDateString } from '.';
 
 const maximizeProfits = (prices: Entries): MaximizeProfits => {
   /*
@@ -48,9 +48,9 @@ const maximizeProfits = (prices: Entries): MaximizeProfits => {
   // Sort by price in ascending order
   const sortedPrices = pricesCopy.sort((a, b) => b[1] - a[1]);
 
-  const buyDate = dateToString(sortedPrices[sortedPrices.length - 1][0]);
+  const buyDate = formatDateString(sortedPrices[sortedPrices.length - 1][0]);
   const buyPrice = Math.floor(sortedPrices[sortedPrices.length - 1][1]);
-  const sellDate = dateToString(sortedPrices[0][0]);
+  const sellDate = formatDateString(sortedPrices[0][0]);
   const sellPrice = Math.floor(sortedPrices[0][1]);
 
   const profitDayPair = {

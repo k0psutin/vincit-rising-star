@@ -3,7 +3,7 @@ import { AppContext } from '../context';
 import {
   Entries, Entry, HighestTradingVolume, ResultObject,
 } from '../types';
-import { dateToString } from '.';
+import { formatDateString } from '.';
 
 const highestTradingVolume = (total_volumes: Entries): HighestTradingVolume => {
   /*
@@ -25,7 +25,7 @@ const highestTradingVolume = (total_volumes: Entries): HighestTradingVolume => {
   // Sort by volume in ascending order
   const sortedVolumes = volumesCopy.sort((a, b) => b[1] - a[1]);
 
-  const date = dateToString(sortedVolumes[0][0]);
+  const date = formatDateString(sortedVolumes[0][0]);
   const eur = sortedVolumes[0][1];
 
   const tradingVolume = {

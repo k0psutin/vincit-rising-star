@@ -1,4 +1,4 @@
-import { dateToString } from '../utils';
+import { formatDateString } from '../utils';
 import { maximizeProfits } from '../utils/maximizeProfits';
 import { prices } from './testData';
 
@@ -23,9 +23,9 @@ describe('Maximize profits tests', () => {
     const startDate = new Date().getTime();
     const length = 500;
 
-    const buyDate = dateToString(startDate + 1000000);
+    const buyDate = formatDateString(startDate + 1000000);
     const buyPrice = 8000;
-    const sellDate = dateToString(startDate + ((length - 1) * 1000000));
+    const sellDate = formatDateString(startDate + ((length - 1) * 1000000));
     const sellPrice = 8000 + length - 1;
 
     const increasingPrices: Array<Array<number>> = [];

@@ -1,5 +1,7 @@
-export const dateToString = (date: number) => {
-  const dateString = new Date(date).toISOString().substring(0, 10);
+export const dateToString = (date: number) => new Date(date).toISOString().substring(0, 10);
+
+export const formatDateString = (date: number) => {
+  const dateString = dateToString(date);
   const [year, month, day] = dateString.split('-');
   const dayMonthYear = [day, month, year].join('.');
 
