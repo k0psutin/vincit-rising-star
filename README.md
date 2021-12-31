@@ -16,13 +16,13 @@ The application is hosted at Heroku:
 Clone the project from `url here` i.e.
 
 ```[cmd]
-git clone url folder
+git clone https://github.com/k0psutin/vincit-rising-star vincit-rising-star
 ```
 
 Go to the newly created folder and install neccessary modules:
 
 ```[cmd]
-cd scrooge
+cd vincit-rising-star
 npm i
 ```
 
