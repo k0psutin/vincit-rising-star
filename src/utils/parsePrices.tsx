@@ -6,20 +6,16 @@ const parseHourlyPrices = (prices: Entries) => {
     return null;
   }
 
-  let previousDate = '';
-  const parsedPriceList: Entries = [];
+  const parsedPriceList: Entries = [prices[0]];
 
-  for (let i = 0; i < prices.length; i += 1) {
-    const currentDate = dateToString(prices[i][0]);
+  for (let i = 1; i < prices.length; i += 1) {
+    const prevDate = dateToString(prices[i - 1][0]);
+    const nextDate = dateToString(prices[i][0]);
 
-    if (currentDate !== previousDate) {
-      parsedPriceList.push(prices[i]);
+    if (prevDate !== nextDate) {
+      parsedPriceList.push(prices[i - 1]);
     }
-
-    previousDate = currentDate;
   }
-
-  parsedPriceList.push(prices[prices.length - 1]);
 
   return parsedPriceList;
 };
