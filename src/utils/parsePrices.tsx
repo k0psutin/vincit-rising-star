@@ -13,7 +13,7 @@ const parseHourlyPrices = (prices: Entries) => {
     const nextDate = dateToString(prices[i][0]);
 
     if (prevDate !== nextDate) {
-      parsedPriceList.push(prices[i - 1]);
+      parsedPriceList.push(prices[i]);
     }
   }
 
