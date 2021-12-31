@@ -3,16 +3,20 @@ import { maximizeProfits } from '../utils/maximizeProfits';
 import { prices } from './testData';
 
 describe('Maximize profits tests', () => {
-  test('maximizeProfits returns 0 if price list is null', () => {
-    expect(maximizeProfits(null)).toBe(null);
+  const badPair = {
+    buyDate: '0', buyPrice: 0, sellDate: '0', sellPrice: 0,
+  };
+
+  test('maximizeProfits returns bad pair if price list is null', () => {
+    expect(maximizeProfits(null)).toStrictEqual(badPair);
   });
 
-  test('maximizeProfits returns 0 if price list is empty', () => {
-    expect(maximizeProfits([])).toBe(null);
+  test('maximizeProfits returns bad pair if price list is empty', () => {
+    expect(maximizeProfits([])).toStrictEqual(badPair);
   });
 
-  test('maximizeProfits returns 0 if price list is wrong size', () => {
-    expect(maximizeProfits([[0], [1]])).toBe(null);
+  test('maximizeProfits returns bad pair if price list is wrong size', () => {
+    expect(maximizeProfits([[0], [1]])).toStrictEqual(badPair);
   });
 
   test('maximizeProfits returns the correct pair if all prices are ascending', () => {
@@ -20,7 +24,9 @@ describe('Maximize profits tests', () => {
     const length = 500;
 
     const buyDate = dateToString(startDate + 1000000);
+    const buyPrice = 8000;
     const sellDate = dateToString(startDate + ((length - 1) * 1000000));
+    const sellPrice = 8000 + length - 1;
 
     const increasingPrices: Array<Array<number>> = [];
 
@@ -30,12 +36,14 @@ describe('Maximize profits tests', () => {
 
     const goodPair = {
       buyDate,
+      buyPrice,
       sellDate,
+      sellPrice,
     };
 
     const profitDayPair = maximizeProfits(increasingPrices);
 
-    expect(profitDayPair).toEqual(goodPair);
+    expect(profitDayPair).toStrictEqual(goodPair);
   });
 
   test('maximizeProfits returns bad pair if all prices are descending', () => {
@@ -47,13 +55,15 @@ describe('Maximize profits tests', () => {
 
     const profitDayPair = maximizeProfits(increasingPrices);
 
-    expect(profitDayPair).toEqual({ buyDate: '0', sellDate: '0' });
+    expect(profitDayPair).toEqual(badPair);
   });
 
   test('Return correct buy and sell date', () => {
     const profitDayPair = maximizeProfits(prices);
 
-    expect(profitDayPair).toEqual({ buyDate: '17.03.2020', sellDate: '31.12.2020' });
+    expect(profitDayPair).toStrictEqual({
+      buyDate: '17.03.2020', buyPrice: 4509, sellDate: '31.12.2020', sellPrice: 23445,
+    });
   });
 });
 
