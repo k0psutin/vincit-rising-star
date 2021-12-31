@@ -13,7 +13,7 @@ The application is hosted at Heroku:
 
 ### Installation
 
-Clone the project from `url here` i.e.
+Clone the project:
 
 ```[cmd]
 git clone https://github.com/k0psutin/vincit-rising-star vincit-rising-star
