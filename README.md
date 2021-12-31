@@ -7,7 +7,7 @@ The task was to create an application (with the technology of my own choosing) w
 Application has a very minimalistic user interface. You can pick a date range and then press the `fetch` button, to display different analytic information about bitcoin prices and volumes.
 
 The application is hosted at Heroku:
-[asd](asd)
+[https://polar-ridge-59068.herokuapp.com/](https://polar-ridge-59068.herokuapp.com/)
 
 ![Application screenshot](app.png)
 
